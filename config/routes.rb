@@ -1,4 +1,6 @@
 NewFoss::Application.routes.draw do
+  match 'sitemap.xml' => 'sitemaps#sitemap'
+
   resources :users do
      member do
        get :alter_role
