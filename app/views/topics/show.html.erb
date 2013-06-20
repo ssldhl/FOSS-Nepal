@@ -17,7 +17,7 @@
       <% @topic.posts.each do |post| %>
       <tr>
         <td class="post_author" rowspan="2">
-          <span class="name"><%= post.user.username %></span>
+          <span class="name"><%= link_to post.user.username, user_path(User.find_by_username(post.user.username)) %></span>
           <span class="avatar"><%= gravatar_for post.user%></span>
           <span class="info smaller">
             Posts <%= post.user.posts.size %><br />

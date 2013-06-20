@@ -8,6 +8,7 @@
       <h1>
         <%= gravatar_for @user %>
         <%= @user.username %></br>
+        <%= @user.email %></br>
         <h6>Registered <%= @user.created_at.to_s(:joined) %></h6>
       </h1>
     </section>
