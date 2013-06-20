@@ -26,7 +26,7 @@
 		<tbody>
       <tr>
         <td>
-          <%= post.body.bbcode_to_html().html_safe %>
+          <%=simple_format(post.body)%>
         </td>
       </tr>
     </tbody>
