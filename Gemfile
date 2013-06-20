@@ -13,6 +13,7 @@ gem 'metamagic'
 gem 'gretel'
 gem "friendly_id"
 gem 'dynamic_sitemaps'
+gem 'unicorn'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
