@@ -14,9 +14,6 @@ DynamicSitemaps::Sitemap.draw do
                 
   new_page!
   
-  autogenerate  :users,
-                 :last_mod => :updated_at,
-                 :change_freq => 'daily',
-                 :priority => 0.5
+  url about_url, :last_mod => DateTime.now, :change_freq => 'monthly', :priority => 2
   
 end

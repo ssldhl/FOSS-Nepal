@@ -28,11 +28,15 @@
           <span class="left post_date smaller">Posted <%= post.created_at %></span>
           <% if signed_in? %>
             <span class="right controls">
-              <%= link_to "Reply", new_topic_post_path(@topic) %>
-              <%= link_to "Quote", new_topic_post_path(@topic, :quote => post) %>
-              <%if current_user.admin? %>
-                <%= link_to "Edit", edit_post_path(post) %>
-                <%= link_to "Delete", post, :confirm => "Are you sure?", :method => :delete %>
+              <% if @topic.locked? %>
+                <span class="info smaller">This topic is locked by admin.</span>
+              <% else %>
+                <%= link_to "Reply", new_topic_post_path(@topic) %>
+                <%= link_to "Quote", new_topic_post_path(@topic, :quote => post) %>
+                <%if current_user.admin? %>
+                  <%= link_to "Edit", edit_post_path(post) %>
+                  <%= link_to "Delete", post, :confirm => "Are you sure?", :method => :delete %>
+                <% end %>
               <%end%>
             </span>
           <%end%>
