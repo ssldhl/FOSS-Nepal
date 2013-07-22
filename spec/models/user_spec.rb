@@ -16,7 +16,7 @@ require 'spec_helper'
 describe User do
 
   before do
-    @user = User.new(username: "Example User", email: "user@example.com", 
+    @user = User.new(username: "ExampleUser", email: "user@example.com", 
                      password: "foobar", password_confirmation: "foobar")
   end
 
@@ -43,7 +43,7 @@ describe User do
     it { should be_admin }
   end
 
-  describe "when name is not present" do
+  describe "when username is not present" do
     before { @user.username = " " }
     it { should_not be_valid }
   end
@@ -56,6 +56,41 @@ describe User do
   describe "when username is too long" do
     before { @user.username = "a" * 51 }
     it { should_not be_valid }
+  end
+
+  describe "when username is too short" do
+    before {@user.username = "a" * 2}
+    it{ should_not be_valid}
+  end
+
+  describe "when username format is invalid" do
+    it "should be invalid" do
+      name = %w[Example+User E_xamp *&!@]
+      name.each do | invalid_name|
+        @user.username = invalid_name
+        @user.should_not be_valid
+      end
+    end
+  end
+
+  describe "when username format is valid" do
+    it "should be valid" do
+      name = %w[ExampleUser Exam QWE 123 12ex]
+      name.each do |valid_name|
+        @user.username = valid_name
+        @user.should be_valid
+      end
+    end
+  end
+
+  describe "when username is already taken" do
+    before do
+      user_with_same_username = @user.dup
+      user_with_same_username.username = @user.username.upcase
+      user_with_same_username.save
+    end
+
+    it{ should_not be_valid}
   end
 
   describe "when email format is invalid" do

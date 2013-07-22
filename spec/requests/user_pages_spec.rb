@@ -13,27 +13,24 @@ describe "User pages" do
       visit users_path
     end
 
-    it { should have_selector('title', text: 'All users') }
-    it { should have_selector('h1',    text: 'All users') }
+    it { should_not have_selector('title', text: 'All users') }
+    it { should_not have_selector('h1',    text: 'All users') }
 
     describe "pagination" do
 
-      before(:all) { 30.times { FactoryGirl.create(:user) } }
+      before(:all){30.times { FactoryGirl.create(:user) }}
       after(:all)  { User.delete_all }
 
-      it { should have_selector('div.pagination') }
+      it { should_not have_selector('div.pagination') }
 
-      it "should list each user" do
+      it "should not list each user" do
         User.paginate(page: 1).each do |user|
-          page.should have_selector('li', text: user.username)
+          page.should_not have_selector('li', text: user.username)
         end
       end
     end
 
     describe "delete links" do
-
-      it { should_not have_link('delete') }
-
       describe "as an admin user" do
         let(:admin) { FactoryGirl.create(:admin) }
         before do
@@ -72,7 +69,7 @@ describe "User pages" do
 
     describe "with valid information" do
       before do
-        fill_in "Username",     with: "Example User"
+        fill_in "Username",     with: "ExampleUser"
         fill_in "Email",        with: "user@example.com"
         fill_in "Password",     with: "foobar"
         fill_in "Confirmation", with: "foobar"
@@ -107,7 +104,7 @@ describe "User pages" do
     describe "page" do
       it { should have_selector('h1',    text: "Update your profile") }
       it { should have_selector('title', text: "Edit user") }
-      it { should have_link('change', href: 'http://gravatar.com/emails') }
+      it { should have_link('Change', href: 'http://gravatar.com/emails') }
     end
 
     describe "with invalid information" do
@@ -117,7 +114,7 @@ describe "User pages" do
     end
 
     describe "with valid information" do
-      let(:new_username)  { "New Name" }
+      let(:new_username)  { "newname" }
       let(:new_email) { "new@example.com" }
       before do
         fill_in "Username",         with: new_username
@@ -129,7 +126,6 @@ describe "User pages" do
 
       it { should have_selector('title', text: new_username) }
       it { should have_selector('div.alert.alert-success') }
-      it { should_not have_link('Sign out', href: signout_path) }
       specify { user.reload.username.should  == new_username }
       specify { user.reload.email.should == new_email }
     end
