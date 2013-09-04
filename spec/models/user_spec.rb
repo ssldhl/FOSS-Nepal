@@ -2,13 +2,17 @@
 #
 # Table name: users
 #
-#  id           :integer          not null, primary key
-#  username     :string(255)
-#  email        :string(255)
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  topics_count :integer          default(0)
-#  posts_count  :integer          default(0)
+#  id              :integer          not null, primary key
+#  username        :string(255)
+#  email           :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  topics_count    :integer          default(0)
+#  posts_count     :integer          default(0)
+#  password_digest :string(255)
+#  remember_token  :string(255)
+#  admin           :boolean          default(FALSE)
+#  mod             :boolean          default(FALSE)
 #
 
 require 'spec_helper'

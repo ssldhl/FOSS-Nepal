@@ -5,6 +5,8 @@ NewFoss::Application.routes.draw do
      member do
        get :alter_role
        put :alter_role
+       get :def_mod
+       put :def_mod
     end
   end
 
@@ -15,6 +17,8 @@ NewFoss::Application.routes.draw do
     end
   end
   
+  resources :meetings
+  resources :participants
   root to: 'static_pages#home'
   match '/about',   to: 'static_pages#about'
   match '/forums' , to: 'categories#index'

@@ -1,0 +1,17 @@
+<% provide(:title, @meeting.name) %>
+<% meta :description => "Meeting of FOSS Nepal",
+        :keywords => "Meeting, FOSS Nepal" %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @meeting.name %></br>
+        <%= @meeting.info %></br>
+        <%= @meeting.meeting_date %></br>
+        <%= @meeting.venue %></br>
+        <%= link_to "Edit", edit_meeting_path %>
+        <%= link_to "Delete", @meeting, method: :delete, data: { confirm: "You sure?" } %>
+      </h1>
+    </section>
+  </aside>
+</div>

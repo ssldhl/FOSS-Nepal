@@ -1,0 +1,25 @@
+<% provide(:title, 'Edit Meeting') %>
+<% meta :description => "Edit Meeting",
+        :keywords => "Update Meeting, FOSS Nepal" %>
+<h1>Edit Meeting</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@meeting) do |f| %>
+    	<%= render 'shared/meetingerror_messages' %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :info %>
+      <%= f.text_field :info %>
+
+      <%= f.label :meeting_date %>
+      <%= f.date_select(:meeting_date, {start_year: Time.now.year, order: [:month, :day, :year], use_short_month: true, end_year: 1900, prompt: {month: 'Month', day: 'Day', year: 'Year'}}, {:class=>"span2"})%>
+
+      <%= f.label :venue %>
+      <%= f.text_field :venue %>
+
+      <%= f.submit "Update meeting", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
