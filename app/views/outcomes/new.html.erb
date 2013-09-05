@@ -1,0 +1,16 @@
+<% provide(:title, 'New Meeting Outcome') %>
+<% meta :description => "Create new Meeting Outcome",
+        :keywords => "Create Meeting Outcome, FOSS Nepal" %>
+<h1>Create Meeting Outcome</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for [@current_meeting, @current_meeting.build_outcome], :url => meeting_outcome_path(@current_meeting) do |f| %>
+    	<%= render 'shared/outcomeerror_messages' %>
+
+      <%= f.label :result %>
+      <%= f.text_area :result, cols: 60, rows: 15 %>
+
+      <%= f.submit "Create outcome", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

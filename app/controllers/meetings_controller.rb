@@ -3,6 +3,7 @@ class MeetingsController < ApplicationController
 	before_filter :mod_user,  only: [ :destroy, :new, :create, :edit, :update]
 	def show
 		@meeting = Meeting.find(params[:id])
+		@outcomes = @meeting.outcome
 	end
 
 	def index
@@ -10,11 +11,7 @@ class MeetingsController < ApplicationController
 	end
 
 	def new
-		if !signed_in?
-      redirect_to(signin_path)
-    else
-			@meeting = Meeting.new
-		end
+		@meeting = Meeting.new
 	end
 
 	def create

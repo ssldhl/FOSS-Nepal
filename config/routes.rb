@@ -1,6 +1,10 @@
 NewFoss::Application.routes.draw do
   match 'sitemap.xml' => 'sitemaps#sitemap'
 
+  resources :meetings do
+    resource :outcome
+  end
+
   resources :users do
      member do
        get :alter_role
@@ -17,7 +21,7 @@ NewFoss::Application.routes.draw do
     end
   end
   
-  resources :meetings
+  
   resources :participants
   root to: 'static_pages#home'
   match '/about',   to: 'static_pages#about'

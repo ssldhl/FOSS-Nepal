@@ -6,6 +6,7 @@
 #  result     :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  meeting_id :integer
 #
 
 require 'spec_helper'

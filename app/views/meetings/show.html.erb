@@ -4,7 +4,7 @@
 <div class="row">
   <aside class="span4">
     <section>
-      <h1>
+      <h1><br><br><br>
         <%= @meeting.name %></br>
         <%= @meeting.info %></br>
         <%= @meeting.meeting_date %></br>
@@ -12,6 +12,11 @@
         <%= link_to "Edit", edit_meeting_path %>
         <%= link_to "Delete", @meeting, method: :delete, data: { confirm: "You sure?" } %>
       </h1>
+        <% if @outcomes %>
+          <%= render @outcomes %>
+        <% else %>
+          <%= link_to "Add Final Discussion", new_meeting_outcome_path(@meeting.id) %>
+        <% end %>
     </section>
   </aside>
 </div>
