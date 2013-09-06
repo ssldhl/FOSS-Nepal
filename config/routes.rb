@@ -2,7 +2,9 @@ NewFoss::Application.routes.draw do
   match 'sitemap.xml' => 'sitemaps#sitemap'
 
   resources :meetings do
+    resources :participants
     resource :outcome
+    resource :location
   end
 
   resources :users do

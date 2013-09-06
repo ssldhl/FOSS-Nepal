@@ -1,5 +1,5 @@
 <li>
-  <span class="content"><%= outcome.result %></span><br>
-  <%= link_to "Edit outcome", edit_meeting_outcome_path(@meeting.id) %>
-  <%= link_to "Delete outcome", meeting_outcome_path(@meeting.id), method: :delete, data: { confirm: "You sure?" } %>
+  <span class="content"><%= simple_format(outcome.result) %></span><br>
+  <%= link_to "Edit outcome", edit_meeting_outcome_path(@meeting) %>
+  <%= link_to "Delete outcome", meeting_outcome_path(@meeting), method: :delete, data: { confirm: "You sure?" } %>
 </li>

@@ -15,5 +15,6 @@ class Meeting < ActiveRecord::Base
   attr_accessible :info, :meeting_date, :name, :venue
   has_many :participants, :dependent => :destroy
   has_one :outcome, :dependent => :destroy
+  has_one :location, :dependent => :destroy
   validates_presence_of :name, :info, :meeting_date, :venue
 end

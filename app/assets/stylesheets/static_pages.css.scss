@@ -1146,3 +1146,12 @@ form.bs-docs-example {
 select{
     height: auto;
 }
+
+/* map */
+
+#map img { 
+  max-width: none;
+}
+#map label { 
+  width: auto; display:inline; 
+} 

@@ -15,7 +15,38 @@
         <% if @outcomes %>
           <%= render @outcomes %>
         <% else %>
-          <%= link_to "Add Final Discussion", new_meeting_outcome_path(@meeting.id) %>
+          <%= link_to "Add Final Discussion", new_meeting_outcome_path(@meeting) %>
+        <% end %>
+        <% if @participants %>
+          <table class="table table-striped">
+            <caption>Participants</caption>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render @participants %>
+            </tbody>
+          </table>
+        <% end %>
+        <%= form_for [@meeting, @participant] do |f| %>
+          <%= render 'shared/participanterror_messages'%>
+
+          <%= f.label :name %>
+          <%= f.text_field :name %><br>
+
+          <%= f.label :contact %>
+          <%= f.text_field :contact %>
+
+          <%= f.submit "Add", class: "btn btn-large btn-primary" %>
+        <% end %>
+        <% if @locations %>
+          <%= render @locations %>
+          <%= gmaps4rails(@json) %>
+        <% else %>
+          <%= link_to "Add location", new_meeting_location_path(@meeting) %>
         <% end %>
     </section>
   </aside>

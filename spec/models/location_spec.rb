@@ -1,17 +1,18 @@
 # == Schema Information
 #
-# Table name: participants
+# Table name: locations
 #
 #  id         :integer          not null, primary key
-#  name       :string(255)
-#  contact    :string(255)
+#  latitude   :float            default(85.3333)
+#  longitude  :float            default(27.7)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  meeting_id :integer
+#  gmaps_zoom :integer          default(0)
 #
 
 require 'spec_helper'
 
-describe Participant do
+describe Location do
   pending "add some examples to (or delete) #{__FILE__}"
 end

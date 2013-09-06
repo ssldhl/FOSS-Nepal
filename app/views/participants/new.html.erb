@@ -1,0 +1,19 @@
+<% provide(:title, 'New Meeting Participant') %>
+<% meta :description => "Add new Meeting Participant",
+        :keywords => "Add Meeting Participant, FOSS Nepal" %>
+<h1>Add Meeting Participant</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for [@current_meeting, @current_meeting.participants.build] do |f| %>
+    		<%= render 'shared/participanterror_messages'%>
+
+        <%= f.label :name %>
+        <%= f.text_field :name %><br>
+
+        <%= f.label :contact %>
+        <%= f.text_field :contact %>
+
+        <%= f.submit "Add", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -4,6 +4,15 @@ class MeetingsController < ApplicationController
 	def show
 		@meeting = Meeting.find(params[:id])
 		@outcomes = @meeting.outcome
+		@participant = @meeting.participants.build if signed_in?
+		@participants = @meeting.participants.all
+		@locations = @meeting.location
+		if @locations
+			@json = @locations.to_gmaps4rails do |location, marker|
+  						marker.infowindow render_to_string(:partial => "/locations/infowindow", :locals => { :location => location})
+    					marker.title "#{location.longitude}"
+    	end
+   	end
 	end
 
 	def index

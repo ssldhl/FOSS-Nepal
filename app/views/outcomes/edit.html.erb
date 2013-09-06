@@ -5,7 +5,7 @@
 <div class="row">
   <div class="span6 offset3">
     <%= form_for [@current_meeting, @outcome], :url => meeting_outcome_path(@current_meeting) do |f| %>
-    	<%= render 'shared/outcomeerror_messages' %>
+    	<%= render 'shared/outcomeerror_messages'%>
 
       <%= f.label :result %>
       <%= f.text_area :result, cols: 60, rows: 15 %>
