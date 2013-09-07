@@ -9,7 +9,7 @@
   <% end %>
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
-    | <%= link_to "Make admin", :controller => "users", :id => user.id, :action => "alter_role", :method => :put%>
-    | <%= link_to "Make moderator", :controller => "users", :id => user.id, :action => "def_mod", :method => :put%> 
+    | <%= link_to "Admin(Click to alter)", :controller => "users", :id => user.id, :action => "alter_role", :method => :put%>
+    | <%= link_to "Moderator(Click to alter)", :controller => "users", :id => user.id, :action => "def_mod", :method => :put%> 
   <% end %>
 </li>

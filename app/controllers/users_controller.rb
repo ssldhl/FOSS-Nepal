@@ -59,6 +59,6 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.toggle!(:mod)
     flash[:success] = "User Role updated."
-    redirect to users_url
+    redirect_to users_url
   end
 end
