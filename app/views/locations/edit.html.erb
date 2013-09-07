@@ -1,7 +1,14 @@
 <% provide(:title, 'Edit Meeting Location') %>
 <% meta :description => "Edit Meeting Location",
         :keywords => "Edit Meeting Location, FOSS Nepal" %>
-<h1>Edit Meeting Location</h1>
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1>Edit location</h1>
+    <p class="lead">Change the meeting location.</p>
+  </div>
+</header>
+<h1 class="text-center">Update Meeting Location</h1>
+<div class="container">
 <div class="row">
   <div class="span6 offset3">
     <%= form_for [@current_meeting, @location], :url => meeting_location_path(@current_meeting) do |f| %>
@@ -16,10 +23,11 @@
       <%= f.label :zoom %>
       <%= f.text_field :gmaps_zoom, :id=>"centre_gmaps_zoom" %>
 
-      <%= gmaps4rails(@json) %>
+      <%= gmaps("markers" => {"data" => @json}, "map_options" => {"auto_adjust" => true, "auto_zoom" => false, "zoom" => @location.gmaps_zoom}) %>
       <%= render 'locations/gmap' %>
 
       <%= f.submit "Update location", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
+</div>
 </div>

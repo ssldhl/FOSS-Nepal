@@ -4,6 +4,9 @@
   <% if user.admin? %>
   	| Administrator
   <% end %>
+  <% if user.mod? %>
+    | Moderator
+  <% end %>
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
     | <%= link_to "Make admin", :controller => "users", :id => user.id, :action => "alter_role", :method => :put%>

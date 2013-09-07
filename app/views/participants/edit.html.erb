@@ -1,7 +1,14 @@
 <% provide(:title, 'Edit Meeting Participant') %>
 <% meta :description => "Edit Meeting Participant",
         :keywords => "Update Participant, FOSS Nepal" %>
-<h1>Edit Meeting Participant</h1>
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1>Edit participant</h1>
+    <p class="lead">Change participant information.</p>
+  </div>
+</header>
+<h1 class="text-center">Edit Meeting Participant</h1>
+<div class="container">
 <div class="row">
   <div class="span6 offset3">
     <%= form_for [@current_meeting, @participant] do |f| %>
@@ -16,4 +23,5 @@
         <%= f.submit "Update", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
+</div>
 </div>

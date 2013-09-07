@@ -1,15 +1,21 @@
 <% provide(:title, 'Meetings') %>
 <% meta :description => "FOSS Nepal Meetings",
         :keywords => "FOSS, Nepal, FOSS Meeting" %>
-<h1>Meetings @ FOSS Nepal Community</h1>
-<br>
-<% if current_user and current_user.mod?%>
-  <%= link_to "Create meeting", new_meeting_path %>
-<% end %>
-<%= will_paginate %>
-
-<ul class="users">
-  <%= render @meetings %>
-</ul>
-
-<%= will_paginate %>
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1>Meetings</h1>
+    <p class="lead">FOSS Nepal Community Meetings</p>
+    <% if current_user and current_user.mod?%>
+  		<%= link_to "Create meeting", new_meeting_path, :class=>"btn btn-small btn-inverse" %>
+		<% end %>
+  </div>
+</header>
+<div class="container">
+  <div class="row">
+		<%= will_paginate %>
+			<ul class="users">
+  			<%= render @meetings %>
+			</ul>
+		<%= will_paginate %>
+	</div>
+</div>

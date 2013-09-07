@@ -1,13 +1,14 @@
-<% provide(:title, 'Sign up') %>
+<% provide(:title, 'Sign up ') %>
 <% meta :description => "Create new FOSS Nepal user account",
         :keywords => "Create User, FOSS Nepal" %>
 <%= render 'layouts/forum' %>
-<h1>Sign up</h1>
+<h1 class="text-center">Sign up</h1>
 
+<div class="container">
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
-     <%= render 'shared/error_messages' %>
+     <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :username %>
       <%= f.text_field :username %>
@@ -24,4 +25,5 @@
       <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
+</div>
 </div>

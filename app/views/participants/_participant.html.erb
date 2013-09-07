@@ -1,6 +1,8 @@
 <tr>
   <td><%= participant.name %></td>
   <td><%= participant.contact %></td>
-  <td><%= link_to "Edit", edit_meeting_participant_path(@meeting, participant) %></td>
-  <td><%= link_to "Delete", meeting_participant_path(@meeting, participant), method: :delete, data: { confirm: "You sure?" }, title: participant.name %></td>
+  <% if current_user and current_user.mod? %>
+  	<td><%= link_to "Edit", edit_meeting_participant_path(@meeting, participant), :class=>"btn btn-small btn-inverse" %></td>
+  	<td><%= link_to "Delete", meeting_participant_path(@meeting, participant), method: :delete, data: { confirm: "You sure?" }, title: participant.name, :class=>"btn btn-small btn-inverse" %></td>
+  <% end %>
 </tr>

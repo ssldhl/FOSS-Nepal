@@ -1,6 +1,0 @@
-<li>
-  <span class="content"><%= location.latitude %></span><br />
-  <%= location.longitude %><br />
-  <%= link_to "Edit location", edit_meeting_location_path(@meeting) %>
-  <%= link_to "Delete location", meeting_location_path(@meeting), method: :delete, data: { confirm: "You sure?" } %>
-</li>

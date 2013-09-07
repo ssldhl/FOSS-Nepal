@@ -1,7 +1,15 @@
 <% provide(:title, 'Edit Meeting') %>
 <% meta :description => "Edit Meeting",
         :keywords => "Update Meeting, FOSS Nepal" %>
-<h1>Edit Meeting</h1>
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1>Edit meeting</h1>
+    <p class="lead">Change meeting and keep everything updated.</p>
+  </div>
+</header>
+
+<h1 class="text-center">Update Meeting</h1>
+<div class="container">
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@meeting) do |f| %>
@@ -19,7 +27,8 @@
       <%= f.label :venue %>
       <%= f.text_field :venue %>
 
-      <%= f.submit "Update meeting", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Update", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
+</div>
 </div>

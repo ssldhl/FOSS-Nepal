@@ -2,12 +2,13 @@
 <% meta :description => "FOSS Nepal User edit",
         :keywords => "FOSS Forum, FOSS User edit" %>
 <%= render 'layouts/forum' %>
-<h1>Update your profile</h1>
+<h1 class="text-center">Update your profile</h1>
 
+<div class="container">
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
+      <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :username %>
       <%= f.text_field :username %>
@@ -27,4 +28,5 @@
     <%= gravatar_for @user %>
     <%= link_to "Change", "http://gravatar.com/emails", :target => "_blank" %>
   </div>
+</div>
 </div>
