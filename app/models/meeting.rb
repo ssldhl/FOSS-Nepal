@@ -17,4 +17,5 @@ class Meeting < ActiveRecord::Base
   has_one :outcome, :dependent => :destroy
   has_one :location, :dependent => :destroy
   validates_presence_of :name, :info, :meeting_date, :venue
+  default_scope order: 'meetings.created_at DESC'
 end

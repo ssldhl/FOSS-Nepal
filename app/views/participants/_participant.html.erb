@@ -1,4 +1,5 @@
 <tr>
+	<td><%= @sno %></td>
   <td><%= participant.name %></td>
   <td><%= participant.contact %></td>
   <% if current_user and current_user.mod? %>
@@ -6,3 +7,4 @@
   	<td><%= link_to "Delete", meeting_participant_path(@meeting, participant), method: :delete, data: { confirm: "You sure?" }, title: participant.name, :class=>"btn btn-small btn-inverse" %></td>
   <% end %>
 </tr>
+<% @sno=@sno+1 %>

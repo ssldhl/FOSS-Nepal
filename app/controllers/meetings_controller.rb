@@ -4,8 +4,9 @@ class MeetingsController < ApplicationController
 	def show
 		@meeting = Meeting.find(params[:id])
 		@outcomes = @meeting.outcome
+		@sno = 1
 		@participant = @meeting.participants.build if signed_in?
-		@participants = @meeting.participants.all
+		@participants = @meeting.participants.order("name").all
 		@locations = @meeting.location
 		if @locations
 			@json = @locations.to_gmaps4rails do |location, marker|
