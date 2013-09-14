@@ -1,0 +1,34 @@
+<% provide(:title, 'New Event Location') %>
+<% meta :description => "New Event Location",
+        :keywords => "New Event Location, FOSS Nepal" %>
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1>Add location</h1>
+    <p class="lead">Create the event location.</p>
+  </div>
+</header>
+<h1 class="text-center">Create Event Location</h1>
+<div class="container">
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for [@current_event, @current_event.build_elocation], :url => event_elocation_path(@current_event) do |f| %>
+    	<%= render 'shared/locationerror_messages'%>
+
+      <%= f.label :longitude %>
+      <%= f.text_field :longitude, :id=>"centre_longitude" %>
+
+      <%= f.label :latitude %>
+      <%= f.text_field :latitude, :id=>"centre_latitude" %>
+
+      <%= f.label :zoom %>
+      <%= f.text_field :gmaps_zoom, :id=>"centre_gmaps_zoom" %>
+
+      <%= f.label "Adjust zoom and click on the map" %>
+      <%= gmaps4rails(@json) %>
+      <%= render 'shared/gmap' %><br />
+
+      <%= f.submit "Add location", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+</div>

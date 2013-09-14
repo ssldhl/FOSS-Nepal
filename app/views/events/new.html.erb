@@ -1,0 +1,33 @@
+<% provide(:title, 'New Event') %>
+<% meta :description => "Create new Event",
+        :keywords => "Create Event, FOSS Nepal" %>
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1>Create event</h1>
+    <p class="lead">Create a new event.</p>
+  </div>
+</header>
+<h1 class="text-center">Create Event</h1>
+<div class="container">
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@event) do |f| %>
+    	<%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :info %>
+      <%= f.text_field :info %>
+
+      <%= f.label :event_time %>
+      <%= f.datetime_select :event_time %>
+
+      <%= f.label :venue %>
+      <%= f.text_field :venue %>
+
+      <%= f.submit "Create event", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+</div>

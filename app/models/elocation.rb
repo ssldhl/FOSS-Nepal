@@ -1,21 +1,20 @@
 # == Schema Information
 #
-# Table name: locations
+# Table name: elocations
 #
 #  id         :integer          not null, primary key
 #  latitude   :float            default(27.693852455795415)
 #  longitude  :float            default(85.31417280435562)
+#  gmaps_zoom :integer          default(19)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  meeting_id :integer
-#  gmaps_zoom :integer          default(19)
+#  event_id   :integer
 #
 
-class Location < ActiveRecord::Base
+class Elocation < ActiveRecord::Base
   attr_accessible :gmaps_zoom, :latitude, :longitude
-  belongs_to :meeting
-  validates :meeting_id, presence: true
-
+  belongs_to :event
+  validates :event_id, presence: true
   acts_as_gmappable :check_process => false, validation: false
   def gmaps4rails_address
     "#{longitude}" "#{latitude}"

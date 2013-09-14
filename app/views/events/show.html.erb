@@ -1,0 +1,183 @@
+<% provide(:title, @event.name) %>
+<% meta :description => "Event of FOSS Nepal",
+        :keywords => "Event, FOSS Nepal" %>
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1><%= @event.name %></h1>
+    <p class="lead"><%= @event.info %></p>
+    <% if current_user and current_user.mod? %>
+      <%= link_to "Edit", edit_event_path, :class=>"btn btn-small btn-inverse" %>
+      <%= link_to "Delete", @event, method: :delete, data: { confirm: "You sure?" }, :class=>"btn btn-small btn-inverse" %>
+    <% end %>
+  </div>
+</header>
+<div class="container">
+  <div class="row">
+    <div class="span3 bs-docs-sidebar">
+      <ul class="nav nav-list bs-docs-sidenav">
+        <li>
+          <%= link_to '#date' do %>
+            <i class="icon-chevron-right"></i> Date
+          <% end %>
+        </li>
+        <li>
+          <%= link_to '#venue' do %>
+            <i class="icon-chevron-right"></i> Venue
+          <% end %>
+        </li>
+        <li>
+          <%= link_to '#result' do %>
+            <i class="icon-chevron-right"></i> Descriptions
+          <% end %>
+        </li>
+        <li>
+          <%= link_to '#event-list' do %>
+            <i class="icon-chevron-right"></i> Event Lists
+          <% end %>
+        </li>
+        <li>
+          <%= link_to '#contact' do %>
+            <i class="icon-chevron-right"></i> Contact
+          <% end %>
+        </li>
+        <li>
+          <%= link_to '#location' do %>
+            <i class="icon-chevron-right"></i> Location
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div class="span9">
+      <section id="date">
+        <div class="page-header">
+          <h1>Date</h1>
+        </div>
+        <h3> <%= @event.event_time.to_formatted_s(:long_ordinal) %> </h3>
+      </section>
+      <section id="venue">
+        <div class="page-header">
+          <h1>Venue</h1>
+        </div>
+        <h3> <%= @event.venue %> </h3>
+      </section>
+      <section id="outcome">
+        <div class="page-header">
+          <h1>Descriptions</h1>
+          <% if current_user and current_user.mod? and @results %>
+            <%= link_to "Edit", edit_event_result_path(@event), :class=>"btn btn-small btn-inverse" %>
+            <%= link_to "Delete", event_result_path(@event), method: :delete, data: { confirm: "You sure?" }, :class=>"btn btn-small btn-inverse" %>
+          <% end %>
+        </div>
+        <% if @results %>
+          <%= render @results %>
+        <% else %>
+          <p class="lead"> The event descriptions has not been finalized. </p>
+          <% if current_user and current_user.mod? %>
+            <%= link_to "Add Result", new_event_result_path(@event), :class=>"btn btn-small btn-inverse" %>
+          <% end %>
+        <% end %>
+      </section>
+      <section id="event-list">
+        <div class="page-header">
+          <h1>Event Lists</h1>
+        </div>
+        <h3> Lists of the Event </h3>
+        <% if @lists %>
+          <table class="table table-striped">
+            <caption>Event Lists</caption>
+            <thead>
+              <tr>
+                <th><h5>S.No.</h5></th>
+                <th><h5>Name</h5></th>
+                <th><h5>Info</h5></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render @lists %>
+            </tbody>
+          </table>
+        <% end %>
+        <% if current_user and current_user.mod? %>
+          <%= form_for [@event, @list] do |f| %>
+            <%= render 'shared/listerror_messages'%>
+            <div class="control-group">
+              <div class="controls">
+                <%= f.text_field :name, :class=>"span2", type: "text", placeholder: "Name", required: "" %>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <%= f.text_field :info, :class=>"span2", type: "text", placeholder: "Information", required: "" %>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <%= f.submit "Add", :class=> "btn btn-small btn-primary", type: "submit" %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </section>
+      <section id="contact">
+        <div class="page-header">
+          <h1>Contact</h1>
+        </div>
+        <h3> Contact following persons for the more detail information about the event </h3>
+        <% if @contacts %>
+          <table class="table table-striped">
+            <caption>Contact Persons</caption>
+            <thead>
+              <tr>
+                <th><h5>S.No.</h5></th>
+                <th><h5>Name</h5></th>
+                <th><h5>Contact</h5></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render @contacts %>
+            </tbody>
+          </table>
+        <% end %>
+        <% if current_user and current_user.mod? %>
+          <%= form_for [@event, @contact] do |f| %>
+            <%= render 'shared/listerror_messages'%>
+            <div class="control-group">
+              <div class="controls">
+                <%= f.text_field :name, :class=>"span2", type: "text", placeholder: "Name" %>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <%= f.text_field :contact, :class=>"span2", type: "text", placeholder: "Contact" %>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <%= f.submit "Add", :class=> "btn btn-small btn-primary", type: "submit" %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </section>
+      <section id="location">
+        <div class="page-header">
+          <h1>Location</h1>
+          <% if current_user and current_user.mod? and @locations %>
+            <%= link_to "Edit", edit_event_elocation_path(@event), :class=>"btn btn-small btn-inverse" %>
+            <%= link_to "Delete", event_elocation_path(@event), method: :delete, data: { confirm: "You sure?" }, :class=>"btn btn-small btn-inverse" %>
+          <% end %>
+        </div>
+        <h3> Location of the event venue. </h3>
+        <% if @locations %>
+          <%= render @locations %>
+          <%= gmaps("markers" => {"data" => @json}, "map_options" => {"auto_adjust" => true, "auto_zoom" => false, "zoom" => @locations.gmaps_zoom}) %>
+        <% else %>
+          <p class="lead"> The location for the meeting is defined. </p>
+          <% if current_user and current_user.mod? %>
+            <%= link_to "Add location", new_event_elocation_path(@event), :class=>"btn btn-small btn-inverse" %>
+          <% end %>
+        <% end %>
+      </section>
+    </div>
+  </div>
+</div>

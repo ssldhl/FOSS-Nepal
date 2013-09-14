@@ -1,17 +1,17 @@
-<% provide(:title, 'Edit Meeting Location') %>
-<% meta :description => "Edit Meeting Location",
-        :keywords => "Edit Meeting Location, FOSS Nepal" %>
+<% provide(:title, 'Edit Event Location') %>
+<% meta :description => "Edit Event Location",
+        :keywords => "Edit Event Location, FOSS Nepal" %>
 <header class="jumbotron subhead" id="overview">
   <div class="container">
     <h1>Edit location</h1>
-    <p class="lead">Change the meeting location.</p>
+    <p class="lead">Change the event location.</p>
   </div>
 </header>
-<h1 class="text-center">Update Meeting Location</h1>
+<h1 class="text-center">Update Event Location</h1>
 <div class="container">
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for [@current_meeting, @location], :url => meeting_location_path(@current_meeting) do |f| %>
+    <%= form_for [@current_event, @location], :url => event_elocation_path(@current_event) do |f| %>
     	<%= render 'shared/locationerror_messages'%>
 
       <%= f.label :longitude %>
@@ -23,7 +23,7 @@
       <%= f.label :zoom %>
       <%= f.text_field :gmaps_zoom, :id=>"centre_gmaps_zoom" %>
 
-      <%= gmaps("markers" => {"data" => @json}, "map_options" => {"auto_adjust" => true, "auto_zoom" => false, "zoom" => @location.gmaps_zoom}) %>
+      <%= gmaps("markers" => {"data" => @json}, "map_options" => {"auto_adjust" => true, "auto_zoom" => false, "zoom" => @elocation.gmaps_zoom}) %>
       <%= render 'shared/gmap' %>
 
       <%= f.submit "Update location", class: "btn btn-large btn-primary" %>

@@ -1,0 +1,10 @@
+<tr>
+	<td><%= @serial %></td>
+  <td><%= econtact.name %></td>
+  <td><%= econtact.contact %></td>
+  <% if current_user and current_user.mod? %>
+  	<td><%= link_to "Edit", edit_event_econtact_path(@event, econtact), :class=>"btn btn-small btn-inverse" %></td>
+  	<td><%= link_to "Delete", event_econtact_path(@event, econtact), method: :delete, data: { confirm: "You sure?" }, title: econtact.name, :class=>"btn btn-small btn-inverse" %></td>
+  <% end %>
+</tr>
+<% @serial=@serial+1 %>

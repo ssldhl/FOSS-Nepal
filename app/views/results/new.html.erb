@@ -1,0 +1,27 @@
+<% provide(:title, 'New Event Description') %>
+<% meta :description => "New Event Description",
+        :keywords => "New Event Description, FOSS Nepal" %>
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1>New Description</h1>
+    <p class="lead">Add the descriptions of meeting.</p>
+  </div>
+</header>
+<h1 class="text-center">Add Meeting Description</h1>
+<div class="container">
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for [@current_event, @current_event.build_result], :url => event_result_path(@current_event) do |f| %>
+    	<%= render 'shared/resulterror_messages'%>
+
+      <%= f.label :description %>
+      <%= f.text_area :description, cols: 60, rows: 15, placeholder: "Add the html tags to format texts.", required: "" %>
+
+      <%= f.label :extras %>
+      <%= f.text_area :extras, cols: 30, rows: 15 %>
+
+      <%= f.submit "Create", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+</div>

@@ -1,0 +1,27 @@
+<% provide(:title, 'New Event list') %>
+<% meta :description => "New Event List",
+        :keywords => "New Event List, FOSS Nepal" %>
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1>New Event List</h1>
+    <p class="lead">Create event list information.</p>
+  </div>
+</header>
+<h1 class="text-center">New Event list</h1>
+<div class="container">
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for [@current_event, @current_event.eventlists.build] do |f| %>
+    		<%= render 'shared/listerror_messages'%>
+
+        <%= f.label :name %>
+        <%= f.text_field :name %><br>
+
+        <%= f.label :info %>
+        <%= f.text_field :info %>
+
+        <%= f.submit "Add", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+</div>

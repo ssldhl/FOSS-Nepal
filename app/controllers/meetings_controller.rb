@@ -10,7 +10,7 @@ class MeetingsController < ApplicationController
 		@locations = @meeting.location
 		if @locations
 			@json = @locations.to_gmaps4rails do |location, marker|
-  						marker.infowindow render_to_string(:partial => "/locations/infowindow", :locals => { :location => location})
+  						marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :location => location})
     					marker.title "#{@meeting.name}"
     	end
    	end

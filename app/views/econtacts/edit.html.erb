@@ -1,0 +1,27 @@
+<% provide(:title, 'Edit Event Contact') %>
+<% meta :description => "Edit Event Contact",
+        :keywords => "Update Event Contact, FOSS Nepal" %>
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1>Edit Event Contact</h1>
+    <p class="lead">Change event contact information.</p>
+  </div>
+</header>
+<h1 class="text-center">Edit Event Contact</h1>
+<div class="container">
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for [@current_event, @contact] do |f| %>
+    		<%= render 'shared/contacterror_messages'%>
+
+        <%= f.label :name %>
+        <%= f.text_field :name %><br>
+
+        <%= f.label :contact %>
+        <%= f.text_field :contact %>
+
+        <%= f.submit "Update", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+</div>

@@ -1,0 +1,22 @@
+<% provide(:title, 'Events') %>
+<% meta :description => "FOSS Nepal Events",
+        :keywords => "FOSS, Nepal, FOSS Event" %>
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1>Events</h1>
+    <p class="lead">FOSS Nepal Community Events</p>
+    <% if current_user and current_user.mod?%>
+  		<%= link_to "Create event", new_event_path, :class=>"btn btn-small btn-inverse" %>
+		<% end %>
+  </div>
+</header>
+<h1 class="text-center"> All FOSS Events </h1>
+<div class="container">
+  <div class="row">
+		<%= will_paginate %>
+			<ul class="users">
+  			<%= render @events %>
+			</ul>
+		<%= will_paginate %>
+	</div>
+</div>

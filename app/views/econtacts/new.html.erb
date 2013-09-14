@@ -1,0 +1,27 @@
+<% provide(:title, 'New Event Contact') %>
+<% meta :description => "New Event Contact",
+        :keywords => "New Event Contact, FOSS Nepal" %>
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1>New Event Contact</h1>
+    <p class="lead">Add event contact information.</p>
+  </div>
+</header>
+<h1 class="text-center">Add Event Contact</h1>
+<div class="container">
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for [@current_event, @current_event.econtacts.build] do |f| %>
+    		<%= render 'shared/contacterror_messages'%>
+
+        <%= f.label :name %>
+        <%= f.text_field :name %><br>
+
+        <%= f.label :contact %>
+        <%= f.text_field :contact %>
+
+        <%= f.submit "Add", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+</div>
